@@ -1,0 +1,29 @@
+<html>
+<head>
+<script src="//cdn.jsdelivr.net/npm/scandit-sdk@5.x"></script>
+<script>
+
+    ScanditSDK.configure("AeZyY2DKQmmLDSv+WBWjDM9FLzaOEj7bsHoT9UZP4qTrfDdhmStVfodOrO7nfx8jgh1Mh98QO7pdXmMueWKPhKdkgpGuNCHlTwaDCUZNU6c2bMoiCFkmAHUD5WxXC+ew6B0ZkJYwFsgKc7a4Zs96FWdK3Fvq2OkCxW7Y30q2nRDcWr0Oua7n9PL52ggNbNplRJJ68GD+Byk/rfrObbLQsbBjfS47RECLuQhMwwW3NwajA1W3VGcAPI8abbRSD9ljswP/ABe3ZW7HZnQGdH4jE6tiLyWCBi0U7P6Ez+AA9J7ubLK5lfHlW/bUMa/jtmNX3IgPCW8DsL1j/5L0krHpnuKAHaRGAOYKEh1EaryN+SrScCiTXlzZXf6o7xGumYFivQZoijrc3OaO3hkdlOBzQhVvz089MkI3Z9FfOMz6MQpK6LB7UI2L/XR9vwL+B0QQkPJQ8oIPlCMs1thY4W4la/8Ptjc+dtCuFY6kWv2tAhwwBTW3s+9DNB0jq/okgm7lHliM+H/DhPYqECvr0mv1X00nCPfPOxIcFBBKWd/P17pcMepMkoVo34chpwRh8yqLkx9/ipSwYzWF63x81xvuX9DbB3u2Pbt10ZEICqguXL4JJqVtS4kpNXDNNAQh9Xn0LV44nteWT8VzeLwCfOI9DXPWW1oCd3GwhZ3Z0YV7N3tDV/PmxNW+Kv7Ww4jgCzCm+BEOgddYwtdRL/pRhpmN4tT4U2VgHMjacf94vYNvWkZff+6afBLTG/NbjCzU+6SI8WotxIk5GhcitAx2W7VmS4mY+rVN1q0bhZD7W+gOTl4DgEezE4KT0A==", {
+        engineLocation: "//cdn.jsdelivr.net/npm/scandit-sdk@5.x/build/",
+    })
+        .then(() => {
+            return ScanditSDK.BarcodePicker.create(document.getElementById("scandit-barcode-picker"), {
+                scanSettings: new ScanditSDK.ScanSettings({ enabledSymbologies: ["ean8", "ean13", "upca", "upce"] }),
+            });
+        })
+        .then((barcodePicker) => {
+            barcodePicker.on("scan", (scanResult) => {
+                alert(scanResult.barcodes[0].data);
+            });
+        });
+alert("hi");
+</script>
+</head>
+<body>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div id="scandit-barcode-picker"></div>
+
+</div>
+</body>
+</html>
